@@ -10,8 +10,8 @@ int main(int argc, char const *argv[])
 		Analog Transfer Function for this filter: H(s) = s^2 / (s^2 + s/Q + 1) */
 
 	// These floating point values are used by the filter code below
-	float Fs = 44000.0f;      // sample rate in samples per second
-	float Pi = 3.141592f;   // the value of Pi
+	float Fs = 44000.0f;      	// sample rate in samples per second
+	float Pi = 3.141592f;   	// the value of Pi
 
 	// These floating point values implement the specific filter type
 	float f0 = 500;                // cut-off (or center) frequency in Hz
@@ -26,17 +26,16 @@ int main(int argc, char const *argv[])
 	float b2 = (1 + cos(w0)) / 2;
 
 	// The Buffer[] array holds the incoming samples, PrevSample[] holds intermediate results
-	float Buffer[N] = {0};         	// this array holds 1024 elements numbered 0 through 1023
-	float PrevSample[3] = {0};        // this array holds 3 elements numbered 0 through 2
+	float Buffer[N] = {0};         		// this array holds 1024 elements numbered 0 through 1023
+	float PrevSample[3] = {0};        	// this array holds 3 elements numbered 0 through 2
 
 	/* These integer (whole number) variables are used below to process 1,024 iterations at a time*/
 	int I = 0;
-	FILE *fin = fopen("demon.raw", "rb");
+	FILE *fin = fopen("demo.raw", "rb");
 	FILE *fout = fopen("demo_out.raw", "wb");
 
 	if (fin && fout) {
-	    while(fread(Buffer,sizeof(float),N,fin) == N){
-
+		while(fread(Buffer,sizeof(float),N,fin) == N){
 			/*TO DO: 1. check if the main buffer Buffer[I] contains less than the full 1024 samples /the last time it runs/
 				The code below executes repeatedly as long as the value of I is less than N
 				Since I was initialized to 0 above, and N was set to 1024, this code executes 1,024 times */
