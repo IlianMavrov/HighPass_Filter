@@ -4,6 +4,7 @@
 
 #define N 1024
 
+
 int main(int argc, char const *argv[])
 {
 	/*  High Pass Filter based on RBJ Cookbook linked above
